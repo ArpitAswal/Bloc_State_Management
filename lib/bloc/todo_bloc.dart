@@ -1,5 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../states/todo_state.dart';
+
 part '../events/todo_event.dart';
 
 class TodoBloc extends Bloc<TodoEvent, TodoState> {
@@ -15,24 +17,5 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       // [...state.todos, event.todo] creates a new list by spreading the existing todos and adding the new event.todo to the end.
       // Emits the new TodoState to notify listeners (widgets) that the state has changed.
     });
-  }
-}
-
-class TodoInitial extends TodoState {
-  // Defines the initial state of the TodoBloc.
-  TodoInitial() : super(todos: []);
-}
-
-class TodoState {
-  // Represents the current state of the todo list.
-  final List<String> todos;
-
-  TodoState({required this.todos});
-
-  TodoState copyWith({List<String>? todos}) {
-    // Creates a new TodoState with optional modifications.
-    // Allows you to create a new state with updated values while keeping
-    // the original state immutable.
-    return TodoState(todos: todos ?? this.todos);
   }
 }
