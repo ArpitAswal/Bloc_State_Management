@@ -15,10 +15,6 @@ class CounterExample extends StatelessWidget {
 
     return Scaffold(
         backgroundColor: Colors.white,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => Navigator.pushNamed(context, '/todo-list'),
-          child: const Icon(Icons.arrow_forward_ios),
-        ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

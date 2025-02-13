@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../states/todo_state.dart';
 
-class TodoListScreen extends StatelessWidget {
-  const TodoListScreen({super.key});
+class TodoListExample extends StatelessWidget {
+  const TodoListExample({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class TodoListScreen extends StatelessWidget {
           title: const Text("Todo List"),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () => Navigator.pushNamed(context, '/add-todo'),
+          onPressed: () => Navigator.pushNamed(context, '/add_todo'),
           tooltip: "Add Todo",
           child: const Icon(Icons.add),
         ),

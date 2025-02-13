@@ -1,6 +1,5 @@
 import 'package:bloc_state_management/bloc/auth_bloc.dart';
 import 'package:bloc_state_management/events/auth_event.dart';
-import 'package:bloc_state_management/screens/home_screen.dart';
 import 'package:bloc_state_management/states/auth_state.dart';
 import 'package:bloc_state_management/widgets/gradient_btn.dart';
 import 'package:bloc_state_management/widgets/login_field.dart';
@@ -47,13 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
           }
 
           if (state is AuthSuccess) {
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const HomeScreen(),
-              ),
-              (route) => false,
-            );
+            Navigator.pushNamed(context, '/add_todo');
           }
         },
         /*
