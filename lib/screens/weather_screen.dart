@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/weather_bloc.dart';
+import '../blocs/weather_bloc.dart';
 import '../events/weather_event.dart';
 import '../states/weather_state.dart';
 import '../widgets/additional_info_item.dart';

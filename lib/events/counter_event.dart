@@ -1,4 +1,4 @@
-part of '../bloc/counter_bloc.dart';
+part of '../blocs/counter_bloc.dart';
 
 sealed class CounterEvent {} // Base class for all counter events
 

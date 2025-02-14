@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import '../../model/weather_model.dart';
-import '../provider/weather_data_provider.dart';
+import '../../models/weather_model.dart';
+import '../providers/weather_data_provider.dart';
 
 // --- Weather Repository --- (Provides an abstraction layer for data fetching)
 class WeatherRepository {

@@ -1,4 +1,4 @@
-import 'package:bloc_state_management/bloc/auth_bloc.dart';
+import 'package:bloc_state_management/blocs/auth_bloc.dart';
 import 'package:bloc_state_management/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,4 +1,4 @@
-part of '../bloc/todo_bloc.dart';
+part of '../blocs/todo_bloc.dart';
 
 class TodoEvent {}
 // Base class for all todo events.

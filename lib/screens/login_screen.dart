@@ -1,4 +1,4 @@
-import 'package:bloc_state_management/bloc/auth_bloc.dart';
+import 'package:bloc_state_management/blocs/auth_bloc.dart';
 import 'package:bloc_state_management/events/auth_event.dart';
 import 'package:bloc_state_management/states/auth_state.dart';
 import 'package:bloc_state_management/widgets/gradient_btn.dart';
@@ -46,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
           }
 
           if (state is AuthSuccess) {
-            Navigator.pushNamed(context, '/add_todo');
+            Navigator.pushNamed(context, '/home_screen');
           }
         },
         /*
