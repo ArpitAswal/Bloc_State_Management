@@ -1,5 +1,5 @@
 
-import '../model/weather_model.dart';
+import '../models/weather_model.dart';
 
 // --- Weather States --- (Define the possible states of the weather data fetching process)
 sealed class WeatherState {} // Abstract class, base for all weather states

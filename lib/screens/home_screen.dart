@@ -1,6 +1,5 @@
-import 'package:bloc_state_management/bloc/auth_bloc.dart';
+import 'package:bloc_state_management/blocs/auth_bloc.dart';
 import 'package:bloc_state_management/events/auth_event.dart';
-import 'package:bloc_state_management/screens/login_screen.dart';
 import 'package:bloc_state_management/states/auth_state.dart';
 import 'package:bloc_state_management/widgets/gradient_btn.dart';
 import 'package:flutter/material.dart';
@@ -14,13 +13,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: BlocConsumer<AuthBloc, AuthState>(listener: (context, state) {
         if (state is AuthInitial) {
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const LoginScreen(),
-            ),
-            (route) => false,
-          );
+          Navigator.pop(context);
         } else if (state is AuthFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(

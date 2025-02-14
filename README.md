@@ -1,9 +1,72 @@
 # Title: Bloc_State_Management
 
+#### In this REAMDE.md file you will see the terms that we can use in BlocStateManagement to manage the App state and in the code you can see real examples how you can implement cubit and bloc. To make the code easily understand I have added the comment lines to explain which term what things can do. These are the examples you can see in the code:
+
+- LoginForm Example by Bloc
+- Counter Example by both Cubit & Bloc
+- TodoList Example by both Cubit & Bloc
+- NetworkCall Example by both Cubit & Bloc
+- Favorite Item Example by both Cubit & Bloc
+
+## Doubt Session
+
+#### copyWith Memory Allocation
+
+- Yes, copyWith always creates a new instance of the CartItem in memory. It does not modify the existing object. This is crucial for how BLoC and Cubit work. They rely on detecting changes in state objects. If you modified the original object directly, BLoC/Cubit wouldn't recognize the change, and the UI wouldn't update. Immutability (creating new objects instead of modifying old ones) is a cornerstone of BLoC/Cubit.  This behavior is absolutely correct and essential.
+
+#### Spread Operator (...) Memory Allocation
+
+-  When you use the spread operator (...) to add an item to a list, it always creates a new list in memory.  It does not modify the original list.  Again, this is vital for BLoC/Cubit.  If you were to modify the original list directly (e.g., using state.add(newItem)), BLoC/Cubit would not detect the change, and the UI would not update. Creating new lists with the spread operator is the correct and necessary behavior.
+
+#### is Check and Initial State : if (currentState is CartUpdated)
+
+- the if (currentState is CartUpdated) check handles the cases differently: the first time (when the list is empty and the state is CartInitial), it creates a new empty list.  Subsequent times (when the list is not empty and the state is CartUpdated), it copies the existing list.  This ensures that we always work with new lists and new CartItem objects, which is essential for BLoC/Cubit's change detection.
+
+#### context.read vs. context.watch
+
+- Use context.read<T>():  when you want to dispatch an event or call a method on a BLoC/Cubit without rebuilding the widget when the BLoC/Cubit's state changes.
+- Use context.watch<T>(): when you want to react to changes in the BLoC/Cubit's state and rebuild the widget when the state changes.
+
+#### We used BlocBuilder which internally uses context.watch to rebuild the UI when the CartCubit or CartBloc's state changes. so the question arise is which one we should use and when?
+
+- Use context.watch when you need to rebuild a small, specific part of your UI based on a BLoC/Cubit's state, and you don't want to rebuild larger portions of the UI.  This is ideal for things like displaying a count, a summary, or a small widget that depends on the state.
+- Use BlocBuilder when you need to rebuild a larger section of your UI based on a BLoC/Cubit's state, especially when you are building lists or complex layouts that depend on the state.  BlocBuilder is optimized to handle these larger rebuilds efficiently.
+- In many cases, you'll likely use a combination of both.  Use BlocBuilder for the main parts of your UI that depend on the state, and use context.watch for smaller, independent widgets that need to react to state changes without causing unnecessary rebuilds of the larger UI.
+
 #### Lets take a look at how to use BlocProvider to provide a CounterCubit to a CounterPage and react to state changes with BlocBuilder.
 
-- The counter example is available on this repository explore the code and understand it by reading the comment lines.
-- In this example you will understand how you can successfully separated the presentational layer from the business logic layer. Notice that the CounterExample widget knows nothing about what happens when a user taps the buttons. The widget simply notifies the CounterCubit that the user has pressed either the increment or decrement button.
+## CounterCubit
+
+class CounterCubit extends Cubit<int> {
+CounterCubit() : super(0);
+
+void increment() => emit(state + 1);
+void decrement() => emit(state - 1);
+}
+
+## CounterUI
+
+void main() => runApp(CounterApp());
+
+class CounterApp extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+return MaterialApp(
+home: BlocProvider(
+create: (_) => CounterCubit(),
+child: CounterPage(),
+)); 
+}}
+
+class CounterPage .....{
+body: BlocBuilder<CounterCubit, int>(
+builder: (context, count) => Center(child: Text('$count')),
+),
+FloatingActionButton(
+child: const Icon(Icons.add),
+onPressed: () => context.read<CounterCubit>().increment(),
+),
+}
 
 ## BlocBuilder 
 
@@ -170,9 +233,11 @@
 - then from ChildA we can retrieve the Repository instance with:
 
   // with extensions
+
   context.read<RepositoryA>();
 
   // without extensions
+
   RepositoryProvider.of<RepositoryA>(context)
 
 ## MultiRepositoryProvider

@@ -1,6 +1,6 @@
-import 'package:bloc_state_management/bloc/todo_bloc.dart';
-import 'package:bloc_state_management/cubit/todo_cubit.dart';
-import 'package:bloc_state_management/model/todo_model.dart';
+import 'package:bloc_state_management/blocs/todo_bloc.dart';
+import 'package:bloc_state_management/cubits/todo_cubit.dart';
+import 'package:bloc_state_management/models/todo_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,4 +1,4 @@
-import 'package:bloc_state_management/model/todo_model.dart';
+import 'package:bloc_state_management/models/todo_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TodoCubit extends Cubit<List<TodoModel>> {
